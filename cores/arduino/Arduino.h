@@ -51,5 +51,9 @@ extern void loop(void) ;
 
 // Include pins variant
 #include "pins_arduino.h"
+#include "Servo.h"
+#include "IRremote.h"
+#include "mytime.h"
+#include "wifi.h"
 
 #endif // Arduino_h

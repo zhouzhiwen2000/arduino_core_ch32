@@ -21,7 +21,7 @@
 #define _WIRING_TIME_H_
 
 #include "clock.h"
-
+#include "mytime.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -54,7 +54,7 @@ extern uint32_t micros(void) ;
  * \param ms the number of milliseconds to pause (uint32_t)
  */
 extern void delay(uint32_t ms) ;
-
+extern void delay_us(u32 us);
 /**
  * \brief Pauses the program for the amount of time (in microseconds) specified as parameter.
  *
@@ -65,25 +65,26 @@ extern void delay(uint32_t ms) ;
 static inline void delayMicroseconds(uint32_t) __attribute__((always_inline, unused));
 static inline void delayMicroseconds(uint32_t us)
 {
-  __IO uint64_t currentTicks = SysTick->CNT;
-  /* Number of ticks per millisecond */
-  uint64_t tickPerMs = SysTick->CMP + 1;
-  /* Number of ticks to count */
-  uint64_t nbTicks = ((us - ((us > 0) ? 1 : 0)) * tickPerMs) / 1000;
-  /* Number of elapsed ticks */
-  uint64_t elapsedTicks = 0;
-  __IO uint64_t oldTicks = currentTicks;
-  do {
-    currentTicks = SysTick->CNT;
-    // elapsedTicks += (oldTicks < currentTicks) ? tickPerMs + oldTicks - currentTicks :
-    //                 oldTicks - currentTicks;
+  delay_us(us);
+  // __IO uint64_t currentTicks = SysTick->CNT;
+  // /* Number of ticks per millisecond */
+  // uint64_t tickPerMs = SysTick->CMP + 1;
+  // /* Number of ticks to count */
+  // uint64_t nbTicks = ((us - ((us > 0) ? 1 : 0)) * tickPerMs) / 1000;
+  // /* Number of elapsed ticks */
+  // uint64_t elapsedTicks = 0;
+  // __IO uint64_t oldTicks = currentTicks;
+  // do {
+  //   currentTicks = SysTick->CNT;
+  //   // elapsedTicks += (oldTicks < currentTicks) ? tickPerMs + oldTicks - currentTicks :
+  //   //                 oldTicks - currentTicks;
     
-    //increment
-    elapsedTicks += (oldTicks <= currentTicks) ? currentTicks - oldTicks :
-                     tickPerMs - oldTicks + currentTicks;
+  //   //increment
+  //   elapsedTicks += (oldTicks <= currentTicks) ? currentTicks - oldTicks :
+  //                    tickPerMs - oldTicks + currentTicks;
 
-    oldTicks = currentTicks;
-  } while (nbTicks > elapsedTicks);  
+  //   oldTicks = currentTicks;
+  // } while (nbTicks > elapsedTicks);  
 }
 #else
 #define SYSTICK_CNTL    (0xE000F004)   

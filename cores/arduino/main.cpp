@@ -10,6 +10,7 @@
 int main( void )
 {
     pre_init( );
+    time_init();
     setup( );
   
     do {

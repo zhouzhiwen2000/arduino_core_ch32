@@ -35,6 +35,13 @@ void Delay_Us(uint32_t n);
 void Delay_Ms(uint32_t n);
 void USART_Printf_Init(uint32_t baudrate);
 
+// void TIM1_UP_IRQHandler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
+// void TIM1_UP_IRQHandler(void);
+void TIM1_CC_IRQHandler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
+void TIM1_CC_IRQHandler(void);
+void USART2_IRQHandler (void) __attribute__ ((interrupt ("WCH-Interrupt-fast")));
+void USART2_IRQHandler (void);
+
 #if(DEBUG)
   #define PRINT(format, ...)    printf(format, ##__VA_ARGS__)
 #else

@@ -1,0 +1,143 @@
+{
+  "packages": [
+    {
+      "name": "WCH",
+      "maintainer": "WCH",
+      "websiteUrl": "https://www.wch.cn/",
+      "Url": "https://github.com/openwch/board_manager_files/raw/main/package_ch32v_index.json",
+      "email": "tech@wch.cn",
+      "platforms": [
+        {
+          "name": "CH32 MCU EVT Boards",
+          "architecture": "ch32v",
+          "version": "1.0.3",
+          "deprecated": false,
+          "category": "Contributed",
+          "url": "https://codeload.github.com/openwch/arduino_core_ch32/zip/refs/tags/1.0.3",
+          "archiveFileName": "arduino_core_ch32-1.0.3.zip",
+          "checksum": "SHA-256:233B4DC7D1930BBE93FC0F00964ADFC24DDC012585121D113F98CEF8652A1362",
+          "size": "964954",
+          "boards": [
+            {
+              "name": "CH32X035 EVT Board"
+            },
+            {
+              "name": "CH32V30x EVT Board"
+            },
+            {
+              "name": "CH32V20x EVT Board"
+            },
+            {
+              "name": "CH32V10x EVT Board"
+            },
+            {
+              "name": "CH32V00x EVT Board"
+            }
+          ],
+          "help": {},
+          "toolsDependencies": [
+            {
+              "packager": "WCH",
+              "name": "riscv-none-embed-gcc",
+              "version": "8.2.0"
+            },
+            {
+              "packager": "WCH",
+              "name": "openocd",
+              "version": "1.0.0"
+            }
+          ],
+          "discoveryDependencies": [],
+          "monitorDependencies": []
+        }
+      ],
+      "tools": [
+        {
+          "name": "openocd",
+          "version": "1.0.0",
+          "systems": [
+            {
+              "host": "i686-mingw32",
+              "url": "https://codeload.github.com/openwch/openocd_wch/zip/refs/tags/1.0.0",
+              "archiveFileName": "openocd_wch-1.0.0.zip",
+              "size": "9604774",
+              "checksum": "SHA-256:F1E54FD7F253CF37E7F4581088FF62DFDFDAB899B9D3182C36426F6146AE0465"
+            },
+            {
+              "host": "x86_64-linux-gnu",
+              "url": "https://codeload.github.com/TianpeiLee/wch_openocd_linux/tar.gz/refs/tags/1.0.0",
+              "archiveFileName": "wch_openocd_linux-1.0.0.tar.gz",
+              "size": "2097609",
+              "checksum": "SHA-256:10FA9CF5006C3495AEDCAFD1C3903FA8D75D513536432E1D61B59124442EB4C3"
+            },
+            {
+              "host": "x86_64-apple-darwin",
+              "url": "https://codeload.github.com/TianpeiLee/wch_openocd_macos/tar.gz/refs/tags/1.0.0",
+              "archiveFileName": "wch_openocd_macos-1.0.0.tar.gz",
+              "size": "1995618",
+              "checksum": "SHA-256:100DC6A75E302D5E3FF7548FE64351AA545353982BA22C19D43555F3A748BE0E"
+            }
+          ]
+        },
+        {
+          "name": "riscv-none-embed-gcc",
+          "version": "8.2.0",
+          "systems": [
+            {
+              "host": "i686-mingw32",
+              "url": "https://codeload.github.com/openwch/risc-none-embed-gcc/zip/refs/tags/8.2.0",
+              "archiveFileName": "risc-none-embed-gcc-8.2.0.zip",
+              "size": "267710516",
+              "checksum": "SHA-256:43DF880A1908C873A8B6AB115568C6BEAEEC41DDADEB5202703B6AA9FDE50626"
+            },
+            {
+              "host": "x86_64-linux-gnu",
+              "url": "https://codeload.github.com/TianpeiLee/wch_gcc_8_linux/tar.gz/refs/tags/8.2.0",
+              "archiveFileName": "wch_gcc_8_linux-8.2.0.tar.gz",
+              "size": "245443061",
+              "checksum": "SHA-256:967FB021E5689FF79A06A71C7E54FB7FACE418D5E9B27EC64F5E56687557A282"
+            },
+            {
+              "host": "x86_64-apple-darwin",
+              "url": "https://codeload.github.com/TianpeiLee/wch_gcc_macos/tar.gz/refs/tags/8.2.0",
+              "archiveFileName": "wch_gcc_macos-8.2.0.tar.gz",
+              "size": "160591401",
+              "checksum": "SHA-256:E14538AE7B621DE798C2466B338A4174CCE22C9CF12E5C1684C0995931738260"
+            }
+          ]
+        },
+        {
+          "name": "beforeinstall",
+          "version": "1.0.0",
+          "systems": [
+            {
+              "host": "x86_64-linux-gnu",
+              "url": "https://codeload.github.com/TianpeiLee/wch_beforeinstall_linux/tar.gz/refs/tags/1.0.0",
+              "archiveFileName": "wch_beforeinstall_linux-1.0.0.tar.gz",
+              "size": "507269",
+              "checksum": "SHA-256:17EF3A94BC46B9EB9AB1FDECC48FCD3880EEB8FCC36E6648626320F0BF2864DC"
+            },
+            {
+              "host": "i686-mingw32",
+              "url": "https://codeload.github.com/TianpeiLee/wch_beforeinstall_linux/tar.gz/refs/tags/1.0.0",
+              "archiveFileName": "wch_beforeinstall_linux-1.0.0.tar.gz",
+              "size": "507269",
+              "checksum": "SHA-256:17EF3A94BC46B9EB9AB1FDECC48FCD3880EEB8FCC36E6648626320F0BF2864DC"
+            },
+            {
+              "host": "x86_64-apple-darwin",
+              "url": "https://codeload.github.com/TianpeiLee/wch_beforeinstall_linux/tar.gz/refs/tags/1.0.0",
+              "archiveFileName": "wch_beforeinstall_linux-1.0.0.tar.gz",
+              "size": "507269",
+              "checksum": "SHA-256:17EF3A94BC46B9EB9AB1FDECC48FCD3880EEB8FCC36E6648626320F0BF2864DC"
+            }
+          ]
+        }
+      ],
+      "help": {
+        "online": "https://www.wch.cn/"
+      }
+    }
+  ],
+  "IsTrusted": false
+}

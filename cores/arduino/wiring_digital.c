@@ -20,6 +20,7 @@
 
 #include "PinConfigured.h"
 
+#include "verimake.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -30,6 +31,9 @@ extern uint32_t g_anOutputPinConfigured[MAX_NB_PORT];
 
 void pinMode(uint32_t ulPin, uint32_t ulMode)
 {
+
+  ulPin = verimake_pin_select(ulPin);
+
   PinName p = digitalPinToPinName(ulPin);
 
   if (p != NC) {
@@ -81,16 +85,19 @@ void pinMode(uint32_t ulPin, uint32_t ulMode)
 
 void digitalWrite(uint32_t ulPin, uint32_t ulVal)
 {
+  ulPin = verimake_pin_select(ulPin);
   digitalWriteFast(digitalPinToPinName(ulPin), ulVal);
 }
 
 int digitalRead(uint32_t ulPin)
 {
+  ulPin = verimake_pin_select(ulPin);
   return digitalReadFast(digitalPinToPinName(ulPin));
 }
 
 void digitalToggle(uint32_t ulPin)
 {
+  ulPin = verimake_pin_select(ulPin);
   digitalToggleFast(digitalPinToPinName(ulPin));
 }
 

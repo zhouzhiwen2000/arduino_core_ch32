@@ -18,6 +18,10 @@
 
 #include "Arduino.h"
 
+#include "verimake.h"
+
+#include "wiring_digital.h"
+
 /* Measures the length (in microseconds) of a pulse on the pin; state is HIGH
  * or LOW, the type of pulse to measure.  Works on pulses from 2-3 microseconds
  * to 3 minutes in length, but must be called at least a few dozen microseconds
@@ -28,36 +32,33 @@
  */
 uint32_t pulseIn(uint32_t pin, uint32_t state, uint32_t timeout)
 {
+
+  pin = verimake_pin_select(pin);
+
   // Cache the port and bit of the pin in order to speed up the
   // pulse width measuring loop and achieve finer resolution.
   // Calling digitalRead() instead yields much coarser resolution.
-  uint32_t bit = digitalPinToBitMask(pin);
-  __IO uint32_t *portIn = portInputRegister(digitalPinToPort(pin));
-  uint32_t stateMask = (state ? bit : 0);
-  uint32_t startMicros = micros();
-
-  // wait for any previous pulse to end
-  while ((*portIn & bit) == stateMask) {
-    if (micros() - startMicros > timeout) {
-      return 0;
+  uint32_t startMicros = 0;
+  while (digitalRead(pin) == 0)
+  {
+    delayMicroseconds(1); // 等待1us
+    startMicros++;        // 计数
+    if (startMicros >= timeout)
+    {
+      return startMicros;
     }
   }
-
-  // wait for the pulse to start
-  while ((*portIn & bit) != stateMask) {
-    if (micros() - startMicros > timeout) {
-      return 0;
+  startMicros = 0;
+  while (digitalRead(pin)) // 等待echo置高
+  {
+    delayMicroseconds(1); // 等待1us
+    startMicros++;        // 计数
+    if (startMicros >= timeout)
+    {
+     return startMicros;
     }
   }
-
-  uint32_t start = micros();
-  // wait for the pulse to stop
-  while ((*portIn & bit) == stateMask) {
-    if (micros() - startMicros > timeout) {
-      return 0;
-    }
-  }
-  return (micros() - start);
+  return startMicros; // 返回计数值
 }
 
 /* Measures the length (in microseconds) of a pulse on the pin; state is HIGH
